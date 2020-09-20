@@ -1,0 +1,18 @@
+style_options_interface = interface +c {
+    withStyleURL(url: string):style_options_interface;
+}
+
+style_interface = interface +c {
+    static createStyle(options: optional<style_options_interface>) : style_interface;
+    isValid(): bool;
+}
+
+map_render_delegate = interface +o {
+    invokeCallback();
+}
+
+map_interface = interface +c {
+    static createStyle(delegate: map_render_delegate): map_interface;
+    render();
+}
+
