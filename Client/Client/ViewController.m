@@ -6,6 +6,7 @@
 //
 
 #import "ViewController.h"
+#import "MBMapInterface.h"
 
 @interface ViewController ()
 
@@ -15,7 +16,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    MBMapInterface * styledMap = [MBMapInterface createMapInterface];
+    [styledMap render:^{
+        printf("in view controlleR!");
+    }];
+    
 }
 
 

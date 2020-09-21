@@ -12,7 +12,6 @@ map_render_delegate = interface +o {
 }
 
 map_interface = interface +c {
-    static createStyle(delegate: map_render_delegate): map_interface;
     render();
 }
 

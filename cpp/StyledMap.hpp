@@ -19,10 +19,13 @@
 class StyledMap : public MapInterface
 {
     public:
+        std::shared_ptr<MapRenderDelegate>  delegate;
         StyledMap() = default;
-        void setStyle(std::unique_ptr<Style>&&);
+        
+        void setStyle(std::unique_ptr<StyleImpl>&&);
+        void render();
         // throws std::runtime_error if no valid style is set. void render(MapRenderedCallback&&) final;
     private:
-        std::unique_ptr<Style> style;
-        std::shared_ptr<MapRenderDelegate>  delegate;
+        std::unique_ptr<StyleImpl> style;
+        
 };

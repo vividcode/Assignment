@@ -198,13 +198,13 @@
 			isa = PBXGroup;
 			children = (
 				845A02AC2517BF85003BCB35 /* MBMapRenderDelegate+Private.h */,
-				845A02AD2517BF85003BCB35 /* MBStyleOptionsInterface+Private.mm */,
 				845A02AE2517BF85003BCB35 /* MBMapRenderDelegate+Private.mm */,
 				845A02AF2517BF85003BCB35 /* MBStyleOptionsInterface+Private.h */,
-				845A02B02517BF85003BCB35 /* MBMapInterface+Private.mm */,
-				845A02B12517BF85003BCB35 /* MBStyleInterface+Private.mm */,
+				845A02AD2517BF85003BCB35 /* MBStyleOptionsInterface+Private.mm */,
 				845A02B22517BF85003BCB35 /* MBStyleInterface+Private.h */,
+				845A02B12517BF85003BCB35 /* MBStyleInterface+Private.mm */,
 				845A02B32517BF85003BCB35 /* MBMapInterface+Private.h */,
+				845A02B02517BF85003BCB35 /* MBMapInterface+Private.mm */,
 			);
 			path = objcpp;
 			sourceTree = "<group>";

@@ -8,8 +8,7 @@
 
 @interface MBMapInterface : NSObject
 
-+ (nullable MBMapInterface *)createStyle:(nullable id<MBMapRenderDelegate>)delegate;
-
-- (void)render;
-
++ (nullable MBMapInterface *) createMapInterface;
+- (void)render:(void (^_Nonnull)(void))completionBlock;
+@property (nonatomic, copy, nonnull) void (^renderCompletion)(void);
 @end

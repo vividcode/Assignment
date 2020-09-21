@@ -8,6 +8,8 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
 
 @class MBMapInterface;
 
+@protocol MBMapRenderDelegate;
+
 namespace djinni_generated {
 
 class MapInterface
