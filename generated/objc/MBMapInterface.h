@@ -11,4 +11,5 @@
 + (nullable MBMapInterface *) createMapInterface;
 - (void)render:(void (^_Nonnull)(void))completionBlock :(void (^_Nonnull)(NSString *_Nullable))errorBlock;
 @property (nonatomic, copy, nonnull) void (^renderCompletion)(void);
+- (void) setStyle:(MBStyleInterface *_Nonnull) style;
 @end

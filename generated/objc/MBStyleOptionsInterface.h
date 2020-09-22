@@ -8,5 +8,6 @@
 @interface MBStyleOptionsInterface : NSObject
 
 - (nullable MBStyleOptionsInterface *)withStyleURL:(nonnull NSString *)url;
++ (nullable MBStyleOptionsInterface *)createStyleOptions;
 
 @end

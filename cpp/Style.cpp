@@ -13,7 +13,7 @@ StyleImpl::StyleImpl(std::shared_ptr<StyleOptions> &options_) : options(options_
 
 bool StyleImpl::isValid()
 {
-    return (!this->options->url.empty());
+    return ((this->options != nullptr) && (!this->options->url.empty()));
 }
 
 std::shared_ptr<StyleInterface> StyleImpl::createStyle(const std::shared_ptr<StyleOptionsInterface> & options)

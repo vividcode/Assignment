@@ -3,10 +3,12 @@
 
 #import "MBMapInterface+Private.h"
 #import "MBMapRenderDelegate.h"
+#import "MBStyleInterface.h"
 #import "MBMapInterface.h"
 #import "DJICppWrapperCache+Private.h"
 #import "DJIError.h"
 #import "MBMapRenderDelegate+Private.h"
+#import "MBStyleInterface+Private.h"
 #import "StyledMap.hpp"
 #include <exception>
 #include <stdexcept>
@@ -31,6 +33,12 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     MBMapInterface * retVal = ::djinni_generated::MapInterface::fromCpp(objcpp_result_);
     styledMap->delegate = ::djinni_generated::MapRenderDelegate::toCpp(retVal);
     return  retVal;
+}
+
+- (void) setStyle:(MBStyleInterface *) style
+{
+    std::shared_ptr<StyleInterface> cppStyle = ::djinni_generated::StyleInterface::toCpp(style);
+    _cppRefHandle.get()->setStyle(cppStyle);
 }
 
 - (id)initWithCpp:(const std::shared_ptr<::MapInterface>&)cppRef

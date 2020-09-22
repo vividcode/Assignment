@@ -12,9 +12,10 @@
 #include <stdlib.h>
 #include <thread>
 
-void StyledMap::setStyle(std::unique_ptr<StyleImpl>&& style)
+void StyledMap::setStyle(std::shared_ptr<StyleInterface>& style_)
 {
-    style = std::move(style);
+    std::shared_ptr<StyleImpl> derived = std::dynamic_pointer_cast<StyleImpl> (style_);
+    style = std::move(derived);
 }
 
 void StyledMap::render()

@@ -22,10 +22,10 @@ class StyledMap : public MapInterface
         std::shared_ptr<MapRenderDelegate>  delegate;
         StyledMap() = default;
         
-        void setStyle(std::unique_ptr<StyleImpl>&&);
-        void render();
+    void setStyle(std::shared_ptr<StyleInterface>& style_);
+    void render();
         // throws std::runtime_error if no valid style is set. void render(MapRenderedCallback&&) final;
     private:
-        std::unique_ptr<StyleImpl> style;
+        std::shared_ptr<StyleImpl> style;
         
 };

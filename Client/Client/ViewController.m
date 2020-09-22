@@ -6,11 +6,16 @@
 //
 
 #import "ViewController.h"
+#import "MBStyleOptionsInterface.h"
+#import "MBStyleInterface.h"
 #import "MBMapInterface.h"
 
 @interface ViewController ()
 
-@property (nonatomic, strong) MBMapInterface * styledMap;
+@property (nonatomic, strong) MBMapInterface * objcStyledMap;
+
+@property (weak, nonatomic) IBOutlet UIStackView *stackView;
+
 - (IBAction)setStylePressed:(id)sender;
 - (IBAction)renderPressed:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *errorLabel;
@@ -19,41 +24,60 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
-    self.errorLabel.layer.cornerRadius = 8.0;
-    self.errorLabel.layer.masksToBounds = YES;
 }
     
 - (IBAction)renderPressed:(id)sender
 {
-    if (self.styledMap != nil)
+    if (self.objcStyledMap == nil)
     {
-        self.styledMap = nil;
+        self.objcStyledMap = [MBMapInterface createMapInterface];
     }
     
-    self.styledMap = [MBMapInterface createMapInterface];
-    [self.styledMap render:^{
+    self.stackView.userInteractionEnabled = NO;
+    [self.objcStyledMap render:^{
+        self.stackView.userInteractionEnabled = YES;
         NSLog(@"rendered successfully!");
         [self showLabel:self.errorLabel duration:0.8 message:@"rendered successfully!" bShow:YES];
     } :^(NSString * _Nullable errStr) {
+        self.stackView.userInteractionEnabled = YES;
         NSLog(@"Render error: %@", errStr);
         [self showLabel:self.errorLabel duration:0.8 message:errStr bShow:YES];
     }] ;
 }
-    
-- (IBAction)setStylePressed:(id)sender
+
+- (IBAction)resetMapPressed:(id)sender
 {
-    if (self.styledMap != nil)
+    if (self.objcStyledMap != nil)
     {
-        self.styledMap = nil;
+        self.objcStyledMap = nil;
     }
     
-    self.styledMap = [MBMapInterface createMapInterface];
+    [self showLabel:self.errorLabel duration:0.8 message:@"Map reset!" bShow:YES];
+}
+
+- (IBAction)setStylePressed:(id)sender
+{
+    if (self.objcStyledMap != nil)
+    {
+        self.objcStyledMap = nil;
+    }
+
+    self.objcStyledMap = [MBMapInterface createMapInterface];
+    
+    MBStyleOptionsInterface * styleOptions = [MBStyleOptionsInterface createStyleOptions];
+    MBStyleOptionsInterface * styleOptionsWithURL = [styleOptions withStyleURL:@"www.example.com"];
+    MBStyleInterface * style = [MBStyleInterface createStyle:styleOptionsWithURL];
+    
+    [self.objcStyledMap setStyle:style];
+    [self showLabel:self.errorLabel duration:0.8 message:@"Map Style set." bShow:YES];
 }
 
 - (void)showLabel:(UILabel *)label duration:(NSTimeInterval)duration message:(NSString *)message bShow:(BOOL) bShow

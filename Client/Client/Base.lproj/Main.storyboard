@@ -15,12 +15,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="194" translatesAutoresizingMaskIntoConstraints="NO" id="U6w-mv-rEU">
-                                <rect key="frame" x="145.5" y="300" width="123" height="296"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7er-DT-TSt">
+                                <rect key="frame" x="20" y="144" width="374" height="618"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Lq-Du-MWO">
-                                        <rect key="frame" x="0.0" y="0.0" width="123" height="51"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                        <rect key="frame" x="0.0" y="291" width="106" height="36"/>
+                                        <color key="backgroundColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Set Style">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -28,9 +29,22 @@
                                             <action selector="setStylePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KSz-YT-JXM"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="g8Q-JS-4q3" userLabel="Reset Map">
+                                        <rect key="frame" x="126" y="291" width="128" height="36"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Reset Map">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="resetMapPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xhy-nD-uBd"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fGX-k3-08c">
-                                        <rect key="frame" x="0.0" y="245" width="123" height="51"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                        <rect key="frame" x="274" y="291" width="100" height="36"/>
+                                        <color key="backgroundColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Render">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -41,7 +55,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ZN-IN-qAw">
-                                <rect key="frame" x="207" y="448" width="0.0" height="0.0"/>
+                                <rect key="frame" x="20" y="60" width="374" height="0.0"/>
                                 <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -51,14 +65,18 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="U6w-mv-rEU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZJd-x6-TRH"/>
-                            <constraint firstItem="U6w-mv-rEU" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="jDf-0N-D25"/>
-                            <constraint firstItem="1ZN-IN-qAw" firstAttribute="centerX" secondItem="U6w-mv-rEU" secondAttribute="centerX" id="msh-1o-Sqs"/>
-                            <constraint firstItem="1ZN-IN-qAw" firstAttribute="centerY" secondItem="U6w-mv-rEU" secondAttribute="centerY" id="saL-Px-3vQ"/>
+                            <constraint firstItem="7er-DT-TSt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="0J4-h1-LDw"/>
+                            <constraint firstItem="7er-DT-TSt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="XIw-oI-vKU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7er-DT-TSt" secondAttribute="trailing" constant="20" id="cOC-yg-sqE"/>
+                            <constraint firstAttribute="trailing" secondItem="1ZN-IN-qAw" secondAttribute="trailing" constant="20" id="oh8-KK-vva"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7er-DT-TSt" secondAttribute="bottom" constant="100" id="rBO-Q6-dPH"/>
+                            <constraint firstItem="1ZN-IN-qAw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="t4t-5P-scP"/>
+                            <constraint firstItem="1ZN-IN-qAw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="60" id="tvk-Sp-Tyq"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="errorLabel" destination="1ZN-IN-qAw" id="Suj-Fb-nGs"/>
+                        <outlet property="stackView" destination="7er-DT-TSt" id="c3S-XR-47w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

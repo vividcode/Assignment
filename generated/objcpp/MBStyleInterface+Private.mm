@@ -21,10 +21,10 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
 @end
 
 @implementation MBStyleInterface {
-    ::djinni::CppProxyCache::Handle<std::shared_ptr<::StyleImpl>> _cppRefHandle;
+    ::djinni::CppProxyCache::Handle<std::shared_ptr<::StyleInterface>> _cppRefHandle;
 }
 
-- (id)initWithCpp:(const std::shared_ptr<::StyleImpl>&)cppRef
+- (id)initWithCpp:(const std::shared_ptr<::StyleInterface>&)cppRef
 {
     if (self = [super init]) {
         _cppRefHandle.assign(cppRef);
@@ -32,11 +32,12 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     return self;
 }
 
-+ (nullable MBStyleInterface *)createStyle:(nullable MBStyleOptionsInterface *)options {
-    try {
-        auto objcpp_result_ = StyleImpl::createStyle(::djinni::Optional<std::optional, ::djinni_generated::StyleOptionsInterface>::toCpp(options));
-        return ::djinni_generated::StyleInterface::fromCpp(objcpp_result_);
-    } DJINNI_TRANSLATE_EXCEPTIONS()
++ (nullable MBStyleInterface *)createStyle:(nullable MBStyleOptionsInterface *)options
+{
+    std::shared_ptr<StyleOptionsInterface> styleOpts = ::djinni_generated::StyleOptionsInterface::toCpp(options);
+    std::shared_ptr<StyleInterface> style = StyleImpl::createStyle(styleOpts);
+    MBStyleInterface * retVal = ::djinni_generated::StyleInterface::fromCpp(style);
+    return  retVal;
 }
 
 - (BOOL)isValid {

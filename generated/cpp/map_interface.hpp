@@ -3,11 +3,13 @@
 
 #pragma once
 
+#include "style_interface.hpp"
+
 class MapRenderDelegate;
 
 class MapInterface {
 public:
     virtual ~MapInterface() {}
-
+    virtual void setStyle(std::shared_ptr<StyleInterface>& style_) = 0;
     virtual void render() = 0;
 };
