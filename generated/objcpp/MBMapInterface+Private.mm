@@ -41,11 +41,16 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     return self;
 }
 
-- (void)render:(void (^_Nonnull)(void))completionBlock {
+- (void)render:(void (^_Nonnull)(void))completionBlock :(void (^_Nonnull)(NSString *_Nullable))errorBlock {
     self.renderCompletion = completionBlock;
-    try {
+    @try {
         _cppRefHandle.get()->render();
-    } DJINNI_TRANSLATE_EXCEPTIONS()
+    }
+    @catch (NSException * e)
+    {
+        NSString * errStr = [NSString stringWithFormat:@"%@\n%@", [e name], [e description]];
+        errorBlock(errStr);
+    }
 }
 
 - (void)invokeCallback {

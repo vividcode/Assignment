@@ -5,6 +5,7 @@
 //  Created by Admin on 9/20/20.
 //
 
+#include "DJIError.h"
 #include "StyledMap.hpp"
 #include "Style.hpp"
 
@@ -18,14 +19,14 @@ void StyledMap::setStyle(std::unique_ptr<StyleImpl>&& style)
 
 void StyledMap::render()
 {
-//    if (style && style->isValid())
-//    {
-//        this->delegate->invokeCallback();
-//    }
-//    else
-//    {
-//       throw std::runtime_error("no valid style is set");
-//    }
-    
-    this->delegate->invokeCallback();
+    if (style && style->isValid())
+    {
+        this->delegate->invokeCallback();
+    }
+    else
+    {
+        try {
+            throw std::runtime_error("No valid style is set");
+        } DJINNI_TRANSLATE_CUSTOM_EXCEPTIONS()
+    }
 }

@@ -21,11 +21,6 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
 
 namespace djinni {
 
-[[noreturn]] __attribute__((weak)) void throwUnimplemented(const char * /*ctx*/, NSString * message) {
-    [NSException raise:NSInternalInconsistencyException format:@"Unimplemented: %@", message];
-    __builtin_unreachable();
-}
-
 [[noreturn]] __attribute__((weak)) void throwNSExceptionFromCurrent(const char * /*ctx*/) {
     try {
         throw;
@@ -34,6 +29,15 @@ namespace djinni {
         [NSException raise:message format:@"%@", message];
         __builtin_unreachable();
     }
+}
+
+__attribute__((weak)) void throwCustomNSExceptionFromCurrent(const std::exception & e)
+{
+    NSString *message = [NSString stringWithCString:e.what() encoding:NSUTF8StringEncoding];
+
+    NSException * ex = [NSException exceptionWithName:@"mycustomException" reason:message userInfo:nil];
+    
+    [ex raise];
 }
 
 } // namespace djinni
